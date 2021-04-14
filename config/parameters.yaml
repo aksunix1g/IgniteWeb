@@ -1,0 +1,6 @@
+# app/config/parameters.yml
+parameters:
+  # ...
+  twilio_sid: your_acc_sid_here
+  twilio_token: your_auth_token_here
+  twilio_number: 'your_phone_number_here'

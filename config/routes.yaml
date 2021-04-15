@@ -1,0 +1,20 @@
+delete-commande:
+  path: /delete-commande
+  controller: App\Controller\CommandeController::deleteCommande
+show-commandes:
+  path: /show-commandes
+  controller: App\Controller\CommandeController::showCommandes
+update-commande:
+  path: /update-commande/{id}
+  controller: App\Controller\CommandeController::updateCommande
+create-commande:
+  path: /create-commande
+  controller: App\Controller\CommandeController::createCommande
+view-commande:
+  path: /view-commande
+  controller: App\Controller\CommandeController::viewCommande
+valider-commande:
+  path: /valider-commande/{id}
+  controller: App\Controller\CommandeController::validationCommande
+
+

@@ -14,12 +14,5 @@ class UserController
     {
         return new Response('OMG MY F PAGE ALREADY');
     }
-    /**
-     * @Route("/news/why")
-     */
-    public function show()
-    {
-        return new Response('Future');
 
-    }
 }

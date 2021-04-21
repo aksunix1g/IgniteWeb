@@ -1,0 +1,35 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="fp.css">
+<script src="fp.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container" style="
+    margin-left: 0px; position: absolute;
+    left: 40%;
+  top: 20%;">
+    <div class="row">
+        <div class="col-sm-4">
+
+            <form  method="POST" action="redirect.php">
+                <img src="https://i.imgur.com/iLQ2Gh2.png" width="300" height="300" style="display: block; border: 0px;" />
+                <label>New Password</label>
+                <div class="form-group pass_show">
+                    <input type="password"  name="pass" id="pass" class="form-control" placeholder="New Password">
+                </div>
+                <label>Confirm Password</label>
+                <div class="form-group pass_show">
+                    <input type="password"  class="form-control" placeholder="Confirm Password">
+                </div>
+                <br>
+                <input type="hidden" name="salt" value="<?php echo $_GET['id'] ?>">
+                <div class="form-check" style="
+    padding-left: 0px;">
+                    <button  style="margin:auto;
+  display:block;    background-color: #d63546;border-color: #d63546;background-image: linear-gradient(#d63546, #8f0419)" type="submit" onClick="pr()" class="btn btn-primary">Submit</button>
+                </div>
+        </div>
+    </div>
+</div>
+

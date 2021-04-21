@@ -14,24 +14,24 @@ class DashboardController extends AbstractDashboardController
     /**
      * @Route("/admin", name="admin")
      */
-   /* public function index(): Response
+    public function index(): Response
     {
         return parent::index();
     }
-*/
+
     public function indexAction()
     {
-        return $this->render('admin/base.html.twig');
+        return $this->render('admin/home.html.twig');
     }
 
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setTitle('Ignite Admin Dashboard');
-    }
+     public function configureDashboard(): Dashboard
+   {
+       return Dashboard::new()
+           ->setTitle('Ignite Admin Dashboard');
+   }
 
-    public function configureMenuItems(): iterable
+   public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);

@@ -1,45 +1,9 @@
+{# templates/bundles/EasyAdminBundle/layout.html.twig #}
 
-<!DOCTYPE html>
-<html lang="en">
-{{ include('test.html.twig') }}
-
-<body class="bg-theme bg-theme1">
-
-<!-- Start wrapper-->
-<div id="wrapper">
-
-    <!--Start sidebar-wrapper-->
-    {% block sidebar %} {% include 'includes/sidebar.html.twig' %} {% endblock sidebar %}
-    <!--End sidebar-wrapper-->
-    {% block header %} {% include 'includes/header.html.twig' %} {% endblock header %}
-    <!--Start topbar header-->
-
-    <!--End topbar header-->
-
-    <div class="clearfix"></div>
-
-    <div class="content-wrapper">
-
-        <!-- End container-fluid-->
-
-    </div><!--End content-wrapper-->
-    <!--Start Back To Top Button-->
-    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-    <!--End Back To Top Button-->
-
-    <!--Start footer-->
-    {% block footer %} {% include 'includes/footer.html.twig' %} {% endblock footer %}
-    <!--End footer-->
-
-    <!--start color switcher-->
-    {% block colorswitcher %} {% include 'includes/javascript.html.twig' %} {% endblock colorswitcher %}
-    <!--end color switcher-->
-
-</div><!--End wrapper-->
-
-<!-- Bootstrap core JavaScript-->
-{% block js %} {% include 'includes/javascript.html.twig' %} {% endblock js %}
+{# DON'T DO THIS: it will cause an infinite loop #}
+{% extends '@EasyAdmin/layout.html.twig' %}
 
 
-</body>
-</html>
+{% block sidebar %}
+    {% include '@EasyAdmin/menu.html.twig' %}
+{% endblock %}

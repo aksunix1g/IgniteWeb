@@ -1,0 +1,69 @@
+{# ./templates/commande/mypdf.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #commande {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #commande td, #commande th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #commande tr:nth-child(even){background-color: #f2f2f2;}
+
+        #commande tr:hover {background-color: #ddd;}
+
+        #commande th {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-align: left;
+            background-color: #0000A0;
+            color: white;
+        }
+    </style>
+    <meta>
+    <title>Facture</title>
+</head>
+<body>
+<h1 align="center">
+    IGNITE
+</h1>
+<h3 align="center">
+   Facture :
+</h3>
+<table  id="commande">
+    <thead>
+    <tr>
+        <th>Date commande</th>
+        <th>Prix totale</th>
+        <th>Produit</th>
+        <th>Client</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+
+        </tr>
+
+
+    </tbody>
+
+
+</table>
+
+<p align="center">-------------------------------------------------------------------------</p>
+
+<p align="center">Admin</p>
+</body>
+</html>

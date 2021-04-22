@@ -1,0 +1,158 @@
+{% extends 'template.html.twig' %}
+
+        {% block section %}
+
+
+            <!-- cart-main-area start -->
+            <div class="cart-main-area section-padding--lg bg--white" xmlns="http://www.w3.org/1999/html">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 ol-lg-12">
+
+                            <div class="table-content table-responsive">
+                                <table id="cart-table">
+                                    <thead>
+                                    <tr class="title-top">
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price TND</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Total</th>
+                                        <th class="product-remove">Remove</th>
+
+                                    </tr>
+
+
+                                    </thead>
+                                    <tbody>
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+
+                            <div class="cartbox__btn">
+
+
+                                    <ul class="cart__btn__list ">
+                                        <li>
+                                            <a href="javascript:void(0)"  onclick="passOrder()">Passer Commande</a>
+                                            <a href='/create-pdfPanier' target="_blank">Download PDF</a>
+
+                                        </li>
+
+                                    </ul>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- cart-main-area end -->
+            <!-- Start Subscribe Area -->
+            <!-- End Subscribe Area -->
+            <!-- Footer Area -->
+            <footer id="footer" class="footer-area">
+
+            </footer>
+            <!-- //Footer Area -->
+            <!-- Cartbox -->
+            <!-- //Cartbox -->
+
+        {% endblock %}
+{% block javascripts %}
+    <script>
+        let cartDetails = JSON.parse(sessionStorage.getItem('cart'));
+        console.table(cartDetails);
+        let container = $('#cart-table');
+        let img = "";
+        let imgFinal = "";
+        let totalPrice = 0;
+        let productsList = [];
+        cartDetails.forEach((e) => {
+            productsList.push(e);
+            totalPrice += (e.price * e.desiredQuantity);
+            Quantity = e.desiredQuantity;
+            img = "{{ asset('#') }}";
+            imgFinal = img.replace("#", e.image);
+            container.append("<tr id=\"singleline" + e.id + "\" >\n" +
+                "<td class=\"product-thumbnail\"><a href=\"#\"><img src=\"" + imgFinal + "\" alt=\"product img\" /></a></td>\n" +
+                "<td class=\"product-name\"><a href=\"#\">" + e.nom + "</a></td>\n" +
+                "<td class=\"product-price\"><span class=\"amount\" id=\"price" + e.id + "\"  >" + e.price + "</span></td>\n" +
+                "<td class=\"product-quantity\">" +
+                "<input type=\"number\" value=\"" + e.desiredQuantity + "\" id=\"row" + e.id + "\" " +
+                "onchange='changeQuantity(" + e.id + ")' /></td>\n" +
+                "<td class=\"product-subtotal\" id=\"total" + e.id + "\" >" + e.price * e.desiredQuantity + "</td>\n" +
+                "<td>\n" +
+                "<button class=\"cartbox__item__remove\" onclick=\" deleteItem(" + e.id + ")\">\n" +
+                "<i class=\"fa fa-trash\"></i>\n" +
+                "</button>\n" +
+                "</td>\n" +
+                "<div class=\"cart__total__amount\" ><span class=\"amount\">" + totalPrice + "</span></div>\n" +
+
+                "</tr>"
+            );
+
+        });
+
+
+        function passOrder() {
+            console.log(cartDetails);
+            let url = "{{ path('createOrderAjax') }}";
+            console.log(typeof cartDetails);
+            console.log(cartDetails);
+            let params = {total: totalPrice, products: productsList};
+            let successCallback = (data) => {
+                alert("success");
+            };
+            let completeCallback = (data) => {
+                alert('completed')
+            };
+            makeAjaxCall(url, "POST", params, successCallback, null, completeCallback);
+        }
+
+        function changeQuantity(id) {
+            let placeholder = $('#total' + id);
+            let value = Number.parseInt(placeholder.text());
+            let product = productsList.find((e) => e.id === id);
+            if (product !== undefined) {
+                let updatedQuantity = $("#row" + id);
+                value = Number.parseInt(updatedQuantity.val()) * product.price;
+                placeholder.text(value);
+                cartDetails[cartDetails.indexOf(product)].desiredQuantity = Number.parseInt(updatedQuantity.val());
+                updateTotalPrice();
+                console.log(totalPrice);
+                console.table(cartDetails);
+
+            }
+
+
+        }
+
+        function deleteItem(id) {
+            product = cartDetails.find((e) => e.id === id)
+            if (product !== undefined) {
+                cartDetails.splice(cartDetails.indexOf(product), 1);
+                let item = $('#singleline'+id);
+                item.remove();
+                updateTotalPrice();
+            }
+
+        }
+
+        function updateTotalPrice() {
+            totalPrice = 0;
+            cartDetails.forEach((e) => {
+                totalPrice += (e.price * e.desiredQuantity);
+            })
+        }
+
+
+    </script>
+{% endblock %}

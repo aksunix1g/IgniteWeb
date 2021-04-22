@@ -16,5 +16,18 @@ view-commande:
 valider-commande:
   path: /valider-commande/{id}
   controller: App\Controller\CommandeController::validationCommande
-
-
+getCartInfo:
+  path: /cart/checkout
+  defaults: { _controller: App\Controller\CommandeController::renderCart}
+createOrderAjax:
+  path: /create-order
+  defaults: { _controller: App\Controller\CommandeController::createOrder}
+front_Product_show:
+  path: /AllProductsfornt
+  defaults: { _controller: App\Controller\CommandeController::showProduct }
+create-pdf:
+    path: /create-pdf
+    defaults: { _controller: App\Controller\CommandeController::createPdf }
+create-pdfPanier:
+  path: /create-pdfPanier
+  defaults: { _controller: App\Controller\CommandeController::createPdfPanier }

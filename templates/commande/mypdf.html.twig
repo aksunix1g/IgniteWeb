@@ -1,0 +1,72 @@
+{# ./templates/commande/mypdf.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #commande {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #commande td, #commande th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #commande tr:nth-child(even){background-color: #f2f2f2;}
+
+        #commande tr:hover {background-color: #ddd;}
+
+        #commande th {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-align: left;
+            background-color: #0000A0;
+            color: white;
+        }
+    </style>
+    <meta>
+    <title>Commande (Admin)</title>
+</head>
+<body>
+<h1 align="center">
+    IGNITE
+</h1>
+<h3 align="center">
+    Liste des commandes :
+</h3>
+<table  id="commande">
+    <thead>
+    <tr>
+        <th>Date commande</th>
+        <th>Prix totale</th>
+        <th>Valide</th>
+        <th>Produit</th>
+        <th>User</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for commande in  commandes %}
+        <tr>
+            <td>{{ commande.datecom|date() }}</td>
+            <td>{{ commande.prixtotale }}</td>
+            <td>{{ commande.valide }}</td>
+            <td>{% for groups in commande.produit %}
+                    {{ groups.nomproduit }}
+                {% endfor %}</td>
+            <td>{{ commande.user.email }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+</table>
+
+<p align="center">-------------------------------------------------------------------------</p>
+
+<p align="center">Admin</p>
+</body>
+</html>

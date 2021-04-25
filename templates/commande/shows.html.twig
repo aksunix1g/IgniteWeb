@@ -2,10 +2,53 @@
 
 {% block title %}IGNITE - Commandes (Admin){% endblock %}
         {% block div %}
+            <div class="card mt-3">
+                <div class="card-content">
+                    <div class="row row-group m-0">
+
+                        <div class="col-12 col-lg-6 col-xl-3 border-light">
+                            <div class="card-body">
+                                <h5>
+                                    <span id="tot">
+                                    </span>
+                                </h5>
+                                <p class="mb-0 text-white small-font">Commandes <span class="float-right"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-3 border-light">
+                            <div class="card-body">
+                                <h5>
+                                    <span id="val">
+                                    </span>
+                                </h5>
+                                <p class="mb-0 text-white small-font">Commandes Valides <span class="float-right"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-3 border-light">
+                            <div class="card-body">
+                                <h5>
+                                    <span id="non">
+                                    </span>
+                                </h5>
+                                <p class="mb-0 text-white small-font">Commandes Non Valides<span class="float-right"></span></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-3 border-light">
+                            <div class="card-body">
+                                <h5>
+                                    <span id="prix">
+                                    </span>
+                                </h5>
+                                <p class="mb-0 text-white small-font">Revenu totale<span class="float-right"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <div class="row">
     <div class="col-12 col-lg-12">
         <div class="card">
-            <div class="card-header">Commandes Order Tables
+            <div class="card-header" align="center"><h3>Votre Tables des Commandes</h3>
                 <div class="card-action">
                     <div class="dropdown">
                         <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
@@ -13,24 +56,20 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href='/create-pdf' target="_blank">Creer PDF Commandes</a>
-                            <a class="dropdown-item" href="javascript:void();">Another action</a>
-                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table align-items-center table-flush table-borderless">
+                <table class="table align-items-center table-flush table-borderless" id="table">
                     <thead>
                     <tr>
-                        <th>datecom</th>
-                        <th>prix totale</th>
-                        <th>valide</th>
-                        <th>produit</th>
-                        <th>E-mail</th>
-                        <th>Validation</th>
+                        <th>User E-mail</th>
+                        <th>Date Commande</th>
+                        <th>Prix Totale</th>
+                        <th>Valide/Non</th>
+                        <th>Nom Produit</th>
+                        <th>Valider/Annuler</th>
 
                     </tr>
                     </thead>
@@ -41,16 +80,16 @@
                     {% else %}
                     {% for commande in  commandes %}
                         <tr>
+                            <td>{{ commande.user.email }}</td>
                             <td>{{ commande.datecom|date() }}</td>
                             <td>{{ commande.prixtotale }}</td>
                             <td>{{ commande.valide }}</td>
                             <td>{% for groups in commande.produit %}
                                     {{ groups.nomproduit }}
                                 {% endfor %}</td>
-                            <td>{{ commande.user.email }}</td>
                             <td>
                                 <a href="javascript:void(0)"
-                                   onclick="deletecommande({{ commande.id }})">Supprimer</a>
+                                   onclick="deletecommande({{ commande.id }})">Annuler</a>
                                 <a href="{{ path('valider-commande',{'id':commande.id}) }}">Valider</a>
                             </td>
                         </tr>
@@ -58,8 +97,6 @@
                     {% endif %}
 
                     </tbody>
-
-
                 </table>
             </div>
         </div>
@@ -67,48 +104,7 @@
 </div>
 
             <div class="card mt-3">
-                <div class="card-content">
-                    <div class="row row-group m-0">
-                        <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body">
-                                <h5>
-                                   ello
-
-                                    </span>
-
-                                </h5>
-                                <p class="mb-0 text-white small-font">Commandes Totale <span class="float-right"></span></p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body">
-                                <h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
-                                <div class="progress my-3" style="height:3px;">
-                                    <div class="progress-bar" style="width:55%"></div>
-                                </div>
-                                <p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body">
-                                <h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
-                                <div class="progress my-3" style="height:3px;">
-                                    <div class="progress-bar" style="width:55%"></div>
-                                </div>
-                                <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xl-3 border-light">
-                            <div class="card-body">
-                                <h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
-                                <div class="progress my-3" style="height:3px;">
-                                    <div class="progress-bar" style="width:55%"></div>
-                                </div>
-                                <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i class="zmdi zmdi-long-arrow-up"></i></span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <canvas id="myChart" width="400" height="150"></canvas>
             </div>
 
 

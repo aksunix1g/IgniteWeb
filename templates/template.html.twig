@@ -16,13 +16,12 @@
             <!-- Google font (font-family: 'Dosis', Roboto;) -->
             <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-
             <!-- Stylesheets -->
             <link rel="stylesheet" href="{{ asset('web/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('web/css/plugins.css') }}">
             <link rel="stylesheet" href="{{ asset('web/style.css') }}">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css">
-
+            <script src="https://js.stripe.com/v3/"></script>
             <!-- Cusom css -->
             <link rel="stylesheet" href="{{ asset('web/css/custom.css') }}">
         {% endblock %}
@@ -466,8 +465,6 @@
 
     function addCartDOM(product){
 
-
-
         console.log('invoked and the product is');
         console.log(product);
         let imageUrl="{{ asset('#') }}";
@@ -541,7 +538,10 @@
 <script type="text/javascript" src="https://momentjs.com/downloads/moment.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/fr.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/helpers.esm.min.js" integrity="sha512-6bJ9T7vca48dxyvajHG+YUYP1Bn7map/S+9aC338LmI3Cw6B6uUZjvQxZaCNdZ07wBtQ0UjO+WxIk/l4oT76ew==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.esm.js" integrity="sha512-CT5D9dA5vJ5ICB5Ict075kqySUQDOvZP3X8/AoFxOI8Yy/bMIquzEEqP2BhKSIsZcw4LMv0/dgCiCqlavj5gsw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js" integrity="sha512-BqNYFBAzGfZDnIWSAEGZSD/QFKeVxms2dIBPfw11gZubWwKUjEgmFUtUls8vZ6xTRZN/jaXGHD/ZaxD9+fDo0A==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/helpers.esm.js" integrity="sha512-Y1DJBr7W5+rNZN+M4nX64gqTQiQIm6U/dZqtJgtYgbnBvjJy+ovxgzuCBeKRbabXErpTBkEYITVLYG9MwTm+bw==" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $("#calendar-holder").fullCalendar({
@@ -568,6 +568,37 @@
         });
     });
 </script>
+<script type="text/javascript">
+    // Create an instance of the Stripe object with your publishable API key
+    var stripe = Stripe('pk_test_51IjWBlJ3uLLlWK7lhC8Fg2qbWSewBN8zU3sSzcZ70Ulk2KatlFRaBTb57tR7voLnkbgnWXczOfoRpdvcPfQQBIBv00xWrh3riQ');
+    var checkoutButton = document.getElementById('checkout-button');
+
+    checkoutButton.addEventListener('click', function() {
+        // Create a new Checkout Session using the server-side endpoint you
+        // created in step 3.
+        fetch('/create-checkout-session', {
+            method: 'POST',
+        })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function(result) {
+                // If `redirectToCheckout` fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using `error.message`.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
+    });
+</script>
+
 {% block javascripts %}
 
 {% endblock %}

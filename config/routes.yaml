@@ -28,6 +28,6 @@ front_Product_show:
 create-pdf:
     path: /create-pdf
     defaults: { _controller: App\Controller\CommandeController::createPdf }
-create-pdfPanier:
-  path: /create-pdfPanier
-  defaults: { _controller: App\Controller\CommandeController::createPdfPanier }
+create-checkout-session:
+  path: /create-checkout-session
+  defaults: { _controller: App\Controller\CommandeController::chekout }

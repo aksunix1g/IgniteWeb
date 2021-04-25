@@ -75,7 +75,7 @@
                         </li>
                         <li class="nav-item">
                             <form class="search-bar">
-                                <input type="text" class="form-control" placeholder="Enter keywords">
+                                <input class="inputrecherche" type="text" placeholder="Rechercher une commande..." id="myInput" onkeyup="myFunction()">
                                 <a href="javascript:void();"><i class="icon-magnifier"></i></a>
                             </form>
                         </li>
@@ -218,7 +218,6 @@
         <script src="{{asset('js/jquery.min.js')}}"></script>
         <script src="{{asset('js/popper.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
-
         <!-- simplebar js -->
         <script src="{{asset('plugins/simplebar/js/simplebar.js')}}"></script>
         <!-- sidebar-menu js -->
@@ -228,33 +227,112 @@
         <!-- Custom scripts -->
         <script src="{{asset('js/app-script.js')}}"></script>
         <!-- Chart js -->
-
         <script src="{{asset('plugins/Chart.js/Chart.min.js')}}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
         <!-- Index js -->
         <script src="{{asset('js/index.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             function deletecommande(id) {
                 $.ajax({
                     url: "{{ path('delete-commande') }}",
                     type: "post",
                     dataType: 'json',
-                    data: {command: id},
-                    success: (e) => {
-                        $('#row' + id).remove();
-                        console.log('Requete ajax executé avec succeé');
-                    },
-                    error: (e) => {
-                        console.error('Requete ajax executé avec erreur');
-                    },
-                    complete: (e) => {
-                        console.log('request finished...');
-                    }
-
+                    data: {command: id}
                 })
             }
+        </script>
+<script>
+    var table = document.getElementById("table"),sumVal=0,t=0;
+    for (var i = 1; i < table.rows.length;i++)
+    {
+        sumVal = sumVal + parseInt(table.rows[i].cells[3].innerHTML);
+        t = t + 1;
+        f= t - sumVal;
+    }
+    document.getElementById("non").innerHTML = t - sumVal;
 
+</script>
+        <script>
+            var table = document.getElementById("table"),sumVal=0;
+            for (var i = 1; i < table.rows.length;i++)
+            {
+                sumVal = sumVal + parseInt(table.rows[i].cells[3].innerHTML);
+            }
+            document.getElementById("val").innerHTML = sumVal;
+            console.log(sumVal);
+        </script>
+        <script>
+            var table = document.getElementById("table"),t=0;
+            for (var i = 1; i < table.rows.length;i++)
+            {
+                t = t + 1;
+            }
+            document.getElementById("tot").innerHTML = t;
+            console.log(t);
+        </script>
+        <script>
+            var table = document.getElementById("table"),tnd=0;
+            for (var i = 1; i < table.rows.length;i++)
+            {
+                tnd = tnd + parseInt(table.rows[i].cells[2].innerHTML);
+            }
+            document.getElementById("prix").innerHTML = tnd + " TND";
+            console.log(tnd);
+        </script>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+
+                type: 'bar',
+                data: {
+
+                    labels: ['Totales Commandes', 'Commandes Valider', 'Non Valider'],
+                    datasets: [{
+                        label: '# Commandes',
+                        data: [t, sumVal, f],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            fontColor: "white",
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+        <script>
+            function myFunction() {
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("table");
+                tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
         </script>
     {% endblock %}
 

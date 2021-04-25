@@ -17,6 +17,7 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "phpmailer/phpmailer": "^6.4",
         "sensio/framework-extra-bundle": "^5.1",
+        "stripe/stripe-php": "^7.77",
         "symfony/asset": "*",
         "symfony/console": "*",
         "symfony/dotenv": "*",

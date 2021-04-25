@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\CommandeType;
 use App\Repository\CommandeRepository;
 use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Query\Expr\Select;
 use PHPMailer\PHPMailer\PHPMailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -20,6 +21,12 @@ use Symfony\Component\Routing\Annotation\Route;
 // Include Dompdf required namespaces
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
+//stripe
+use Slim\HttpRequest;
+use Slim\HttpResponse;
+use Stripe\Stripe;
+require 'C:\Users\Dali\PhpstormProjects\Pidev\vendor\autoload.php';
 
 //mailing
 //require_once ('C:\Users\Dali\PhpstormProjects\Pidev\vendor\phpmailer');
@@ -49,6 +56,22 @@ class CommandeController extends AbstractController
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($Commande);
                 $manager->flush();
+
+                //mail
+                $mail = new PHPMailer();
+                $mail->isSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'ssl';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = '465';
+                $mail->isHTML();
+                $mail->Username = 'ignitesport27@gmail.com';
+                $mail->Password = 'omriiT9141';
+                $mail->SetFrom('no-reply@ignite.tn');
+                $mail->Subject = 'IGNITE service client';
+                $mail->Body = 'Votre Commande est refusée';
+                $mail->addAddress('omrixo.dali97@gmail.com');
+                $mail->send();
                 return new JsonResponse(array('operation' => 'succes'));
             } else {
                 return new JsonResponse(array('operation' => 'failure'));
@@ -173,7 +196,7 @@ class CommandeController extends AbstractController
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = '465';
         $mail->isHTML();
-        $mail->Username = 'mohamedali.omri@esprit.tn';
+        $mail->Username = 'ignitesport27@gmail.com';
         $mail->Password = 'omriiT9141';
         $mail->SetFrom('no-reply@ignite.tn');
         $mail->Subject = 'IGNITE service client';
@@ -188,7 +211,8 @@ class CommandeController extends AbstractController
     /**
      * @Route("/cart/checkout", name="getCartInfo")
      */
-    public function renderCart(){
+    public function renderCart()
+    {
         return $this->render('commande/cart.html.twig');
     }
 
@@ -196,28 +220,25 @@ class CommandeController extends AbstractController
     /**
      * @Route("/create-order", name="createOrderAjax")
      */
-    public function createOrder(Request $request){
+    public function createOrder(Request $request)
+    {
         // si la requete est de type ajax
-        if ($request->isXmlHttpRequest()){
-
-            $commande=new Commande();
+        if ($request->isXmlHttpRequest()) {
+            $commande = new Commande();
             $commande->setPrixtotale((float)$request->request->get('total'));
             $commande->setValide(0);
             $commande->setDatecom(new \DateTime('now'));
 
-            $user=$this->getDoctrine()->getRepository(user::class)->find(1);
+            $user = $this->getDoctrine()->getRepository(user::class)->find(1);
 
             $commande->setUser($user);
             $this->getDoctrine()->getManager()->persist($commande);
-            $products=$request->request->get('products');
-            foreach ($products as $single)
-            {
-                $product=$this->getDoctrine()->getRepository(Produit::class)->find((int)$single["id"]);
+            $products = $request->request->get('products');
+            foreach ($products as $single) {
+                $product = $this->getDoctrine()->getRepository(Produit::class)->find((int)$single["id"]);
 
                 $commande->addProduit($product);
                 $this->getDoctrine()->getManager()->flush();
-
-
             }
             //mailing
             $mail = new PHPMailer();
@@ -227,7 +248,7 @@ class CommandeController extends AbstractController
             $mail->Host = 'smtp.gmail.com';
             $mail->Port = '465';
             $mail->isHTML();
-            $mail->Username = 'mohamedali.omri@esprit.tn';
+            $mail->Username = 'ignitesport27@gmail.com';
             $mail->Password = 'omriiT9141';
             $mail->SetFrom('no-reply@ignite.tn');
             $mail->Subject = 'IGNITE service client';
@@ -236,18 +257,18 @@ class CommandeController extends AbstractController
             $mail->send();
 
             $this->getDoctrine()->getManager()->persist($commande);
-            return new JsonResponse(array('operation'=>'success'));
-        }
-        else return new Response('please use ajax');
+            return new JsonResponse(array('operation' => 'success'));
+        } else return new Response('Erreur');
     }
 
-    public function showProduct(){
+    public function showProduct()
+    {
 
-        $em= $this->getDoctrine()->getManager();
-        $Product =$em->getRepository('App\Entity\Produit')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $Product = $em->getRepository('App\Entity\Produit')->findAll();
 
-        return $this->render('commande/shop-grid.html.twig',array(
-            'Products'=> $Product));
+        return $this->render('commande/shop-grid.html.twig', array(
+            'Products' => $Product));
     }
 
     /**
@@ -265,8 +286,8 @@ class CommandeController extends AbstractController
         $dompdf = new Dompdf($commande);
 
 
-        $html = $this->renderView('commande/mypdf.html.twig',array(
-            'commandes'=> $commande));
+        $html = $this->renderView('commande/mypdf.html.twig', array(
+            'commandes' => $commande));
 
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
@@ -282,37 +303,34 @@ class CommandeController extends AbstractController
             "Attachment" => false
         ]);
     }
+
     /**
-     * @Route("/create-pdfPanier", name="createPdfPanier")
+     * @Route("/create-checkout-session", name="checkout")
      */
-    public function pdfPanier()
+    public function checkout(): Response
+
     {
-        //$dompdf -> loadHtml("<img src='images/icon.png'>");
+        \Stripe\Stripe::setApiKey('sk_test_51IjWBlJ3uLLlWK7lVMzl51Bo1FesCGVn3hV7X6OF0Qt1CfjVtFHZxuaqqvMGCrPCaico1hGjS8eyBmDHw0dYoHiV00TG02kAPb');
 
-        $commande = $this->render('commande/cart.html.twig');
-
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($commande);
-
-
-        $html = $this->renderView('commande/panierPdf.html.twig',array(
-            'commandes'=> $commande));
-
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("mypdf.pdf", [
-            "Attachment" => false
+        $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'eur',
+                    'product_data' => [
+                        'name' => 'T-shirt',
+                    ],
+                    'unit_amount' => 2000,
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => 'https://example.com/success',
+            'cancel_url' => 'https://example.com/cancel',
         ]);
-    }
 
+        return new JsonResponse([ 'id' => $session->id ]);
+    }
 
 
 }

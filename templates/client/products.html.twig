@@ -1,0 +1,33 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+   
+
+   <div class="card-columns">
+        
+        {% for produit in produit %}
+        
+           
+        <div class="card">
+        <img src="{{ asset('uploads/image/' ~ produit.imageproduit) }}"  alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ produit.nomproduit }} </h5>
+
+            <a href="{{ path('affichew', {'idproduit': produit.idproduit}) }}" class="btn btn-success">show</a>
+
+        </div>
+    </div>
+    
+               
+               
+                
+            
+       
+        {% endfor %}
+        
+    </div>
+
+    
+{% endblock %}

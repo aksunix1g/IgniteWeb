@@ -1,0 +1,47 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+
+    <table class="table table-bordered">
+        <tbody>
+     
+        <tr>
+         <th>nomproduit</th>
+
+         <td>{{ aux.nomproduit }}</td>
+        </tr>
+
+        <tr>
+            <th>Descriptionproduit</th>
+            <td>{{ aux.descriptionproduit }}</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <th>prix</th>
+            <td>{{ aux.prixproduit }}</td>
+        </tr>
+        
+        <tr>
+            <th>quantiteproduit</th>
+            <td>{{ aux.quantiteproduit }}</td>
+        </tr>
+        <tr>
+            <th>imageproduit</th>
+            <td><img src="{{app.request.basepath}}/uploads/image/{{ aux.imageproduit }}"></td>
+        </tr>
+
+
+
+
+        </tbody>
+    </table>
+    <a href="  #" class="btn btn-primary">add cart</a>
+
+
+
+{% endblock %}

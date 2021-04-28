@@ -48,6 +48,8 @@ class Produit
      * @var float
      *
      * @ORM\Column(name="prixProduit", type="float", precision=10, scale=0, nullable=false)
+     * @Assert\NotNull(message="ce champs ne peut pas etre null")
+     * 
      * @Assert\Length(min=3, minMessage="Le prix  doit contenir au minimum 3 caracteres !")
      */
     private $prixproduit;
@@ -56,6 +58,7 @@ class Produit
      * @var int
      *
      * @ORM\Column(name="quantiteProduit", type="integer", nullable=false)
+     * @Assert\NotNull(message="ce champs ne peut pas etre null")
      */
     private $quantiteproduit;
 
@@ -63,6 +66,7 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="descriptionProduit", type="string", length=300, nullable=false)
+     *@Assert\NotNull(message="ce champs ne peut pas etre null")
      */
     private $descriptionproduit;
 

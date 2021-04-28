@@ -40,6 +40,17 @@
         {% endfor %}
         </tbody>
     </table>
-
+     <input id="impression" name="impression" type="button" class="btn btn-warning btn-xs onclick="imprimer_page()" value="Imprimer la liste des Produits" />
     <a href="{{ path('produit_new') }}">Create new</a>
+     <input id="impression" name="impression" type="button" class="btn btn-success btn-xs onclick="imprimer_page()" value="statistque   " />
+
+{% endblock %}
+{% block javascripts %}
+  {#{{ encore_entry_script_tags('app') }}#}
+        
+ <script type="text/javascript">
+function imprimer_page(){
+  window.print();
+}
+</script>
 {% endblock %}

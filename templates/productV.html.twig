@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,261 +27,540 @@ http://www.templatemo.com/tm-487-fitness
 <link href='https://fonts.googleapis.com/css?family=Lora:700italic' rel='stylesheet' type='text/css'>
 {% endblock %} 
 </head>
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
 
-<!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
+<!-- =========================
+     PRE LOADER       
+============================== -->
+<div  class="preloader">
 
-      <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">MDB</strong>
-      </a>
+	<div class="sk-spinner sk-spinner-pulse"></div>
 
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+</div>
 
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-              target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-              tutorials</a>
-          </li>
-        </ul>
+<!-- =========================
+    NAVIGATION SECTION   
+============================== -->
+<div class="navbar navbar-default navbar-fixed-top sticky-navigation" role="navigation">
+	<div class="container">
 
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> 1 </span>
-              <i class="fas fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-              target="_blank">
-              <i class="fab fa-github mr-2"></i>MDB GitHub
-            </a>
-          </li>
-        </ul>
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+				<span class="icon icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">Fitness</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right main-navigation">
+				<li><a href="#home" class="smoothScroll">Home</a></li>
+				<li><a href="#overview" class="smoothScroll">About</a></li>
+				<li><a href="#trainer" class="smoothScroll">Trainers</a></li>
+				<li><a href="#blog" class="smoothScroll">Blog</a></li>
+				<li><a href="#price" class="smoothScroll">Prices</a></li>
+				<li><a href="#testimonial" class="smoothScroll">Testimonials</a></li>
+			</ul>
+		</div>
 
-      </div>
+	</div>
+</div>
 
-    </div>
-  </nav>
-  <!-- Navbar -->
 
-  <!--Main layout-->
-  <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
+<!-- =========================
+    HOME SECTION   
+============================== -->
+<section id="home" class="parallax-section">
 
-      <!--Grid row-->
-      <div class="row wow fadeIn">
+	<div class="container">
+		<div class="row">
 
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
+			<div class="col-md-offset-1 col-md-10 col-sm-12">
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Hello! you are welcome to</h3>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Professional<br>Fitness Club</h1>
+				<a href="#overview" class="wow fadeInUp smoothScroll btn btn-default" data-wow-delay="2s">LEARN MORE</a>
+			</div>
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg" class="img-fluid" alt="">
+		</div>
+	</div>
+</section>
 
-        </div>
-        <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-md-6 mb-4">
+<!-- =========================
+    OVERVIEW SECTION   
+============================== -->
+<section id="overview" class="parallax-section">
+	<div class="container">
+    {% block body %}
+		<div class="row">
 
-          <!--Content-->
-          <div class="p-4">
+			<div class="col-md-6 col-sm-12">
+				<img src="images/overview-img.jpg" class="img-responsive" alt="Overview">
+				<blockquote class="wow fadeInUp" data-wow-delay="1.9s">Fitness is free website template that can be used for any company. You may download, modify and use this layout for your website.</blockquote>
+			</div>
 
-            <div class="mb-3">
-              <a href="">
-                <span class="badge purple mr-1">Category 2</span>
-              </a>
-              <a href="">
-                <span class="badge blue mr-1">New</span>
-              </a>
-              <a href="">
-                <span class="badge red mr-1">Bestseller</span>
-              </a>
+			<div class="col-md-1"></div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-12" data-wow-delay="1s">
+				<div class="overview-detail">
+					<h2>About Fitness</h2>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat.</p>
+					<p>Fitness web template includes total 2 pages. This is an index (main) page and another is a <a href="blog-single.html">blog page</a>.</p>
+					<a href="#trainer" class="btn btn-default smoothScroll">Let us begin</a>
+				</div>
+			</div>
+
+			<div class="col-md-1"></div>
+
+		</div>
+	</div>
+   
+</section>
+
+
+<!-- =========================
+    TRAINER SECTION   
+============================== -->
+<section id="trainer" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="1.3s">
+				<h2>our Trainers</h2>
+				<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">
+				<div class="trainer-thumb">
+					<img src="images/trainer-img1.jpg" class="img-responsive" alt="Trainer">
+						<div class="trainer-overlay">
+							<div class="trainer-des">
+								<h2>Jenny</h2>
+								<h3>Body Trainer</h3>
+								<ul class="social-icon">
+									<li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="1s"></a></li>
+									<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+									<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet, wisi risus purus augue vulputate.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2s">
+				<div class="trainer-thumb">
+					<img src="images/trainer-img2.jpg" class="img-responsive" alt="Trainer">
+						<div class="trainer-overlay">
+							<div class="trainer-des">
+								<h2>Marry</h2>
+								<h3>Fitness Trainer</h3>
+								<ul class="social-icon">
+									<li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="1s"></a></li>
+									<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+									<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet, wisi risus purus augue vulputate.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2.3s">
+				<div class="trainer-thumb">
+					<img src="images/trainer-img3.jpg" class="img-responsive" alt="Trainer">
+						<div class="trainer-overlay">
+							<div class="trainer-des">
+								<h2>Olivia</h2>
+								<h3>Yoga Teacher</h3>
+								<ul class="social-icon">
+									<li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="1s"></a></li>
+									<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+									<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet, wisi risus purus augue vulputate.</p>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<!-- =========================
+    NEWSLETTER SECTION   
+============================== -->
+<section id="newsletter" class="parallax-section">
+	<div class="container">
+		 <div class="row">
+            <div class="col-md-6">
+              <div class="heading-part mb_20 mt_40">
+                <h2 class="main_title">What We Do?</h2>
+              </div>
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default pull-left">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">1. What is HTML?</a> </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <p>HTML is a computer language devised to can then b the Internet. It is relatively easy to learn, with the basics being accessible.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default pull-left">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. What is Bootstrap?</a> </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Bootstrap is the most popular HTML, CSS, and JS frameen I discovered Bootstrap a few was still gaining in popularity, addition to HTML, CSS and JS.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default pull-left">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. What is CSS?</a> </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Cascading Style Sheets, fondly referred to as CSS, is a simple design language intended to simplify the procrt of a web page. Using CSS.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <p class="lead">
-              <span class="mr-1">
-                <del>$200</del>
-              </span>
-              <span>$100</span>
-            </p>
-
-            <p class="lead font-weight-bold">Description</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-              sint voluptatibus!
-              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
-
-            <form class="d-flex justify-content-left">
-              <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </button>
-
-            </form>
-
+            <div class="col-md-6">
+              <div class="heading-part mb_20 mt_40 ">
+                <h2 class="main_title">Skills</h2>
+              </div>
+              <div id="p_line">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+                  <span class="progress-type">HTML / HTML5</span> <span class="progress-completed">60%</span> </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                  <span class="progress-type">ASP.Net</span> <span class="progress-completed">40%</span> </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"> <span class="sr-only">20% Complete (info)</span> </div>
+                  <span class="progress-type">Java</span> <span class="progress-completed">20%</span> </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"> <span class="sr-only">60% Complete (warning)</span> </div>
+                  <span class="progress-type">JavaScript / jQuery</span> <span class="progress-completed">60%</span> </div>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"> <span class="sr-only">80% Complete (danger)</span> </div>
+                  <span class="progress-type">CSS / CSS3</span> <span class="progress-completed">80%</span> </div>
+              </div>
+            </div>
           </div>
-          <!--Content-->
-
+          <!-- =====  end  ===== -->
+          <!--Team Carousel -->
+          <div class="heading-part mb_10">
+            <h2 class="main_title mt_50">Our Creative Team</h2>
+          </div>
+          <div class="team_grid box">
+            <div class="team3col  owl-carousel">
+              <div class="item team-detail">
+                <div class="team-item-img"> <img src="images/tm1.jpg" alt="" /> </div>
+                <div class="team-designation mt_20">php Developer</div>
+                <h4 class="team-title  mtb_10">joseph Lui </h4>
+                <p>Lorem ipsum dolor sit amet, sea in odio erat, volumu Clita prodesset Rem ipsum dolor s..</p>
+                <ul class="social mt_20 mb_80">
+                  <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                  <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </div>
+              <div class="item team-detail">
+                <div class="team-item-img"> <img src="images/tm2.jpg" alt="" /> </div>
+                <div class="team-designation mt_20">php Developer</div>
+                <h4 class="team-title  mtb_10">joseph Lui </h4>
+                <p>Lorem ipsum dolor sit amet, sea in odio erat, volumu Clita prodesset Rem ipsum dolor s..</p>
+                <ul class="social mt_20 mb_80">
+                  <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                  <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </div>
+              <div class="item team-detail">
+                <div class="team-item-img"> <img src="images/tm3.jpg" alt="" /> </div>
+                <div class="team-designation mt_20">php Developer</div>
+                <h4 class="team-title  mtb_10">joseph Lui </h4>
+                <p>Lorem ipsum dolor sit amet, sea in odio erat, volumu Clita prodesset Rem ipsum dolor s..</p>
+                <ul class="social mt_20 mb_80">
+                  <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                  <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </div>
+              <div class="item team-detail">
+                <div class="team-item-img"> <img src="images/tm4.jpg" alt="" /> </div>
+                <div class="team-designation mt_20">php Developer</div>
+                <h4 class="team-title  mtb_10">joseph Lui </h4>
+                <p>Lorem ipsum dolor sit amet, sea in odio erat, volumu Clita prodesset Rem ipsum dolor s..</p>
+                <ul class="social mt_20 mb_80">
+                  <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                  <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </div>
+              <div class="item team-detail">
+                <div class="team-item-img"> <img src="images/tm5.jpg" alt="" /> </div>
+                <div class="team-designation mt_20">php Developer</div>
+                <h4 class="team-title  mtb_10">joseph Lui </h4>
+                <p>Lorem ipsum dolor sit amet, sea in odio erat, volumu Clita prodesset Rem ipsum dolor s..</p>
+                <ul class="social mt_20 mb_80">
+                  <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="https://www.dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                  <li><a href="https://www.pinterest.com/" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                  <li><a href="https://www.behance.net/" target="_blank"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!--End Team Carousel -->
+          </div>
         </div>
-        <!--Grid column-->
-
       </div>
-      <!--Grid row-->
-
-      <hr>
-
-      <!--Grid row-->
-      <div class="row d-flex justify-content-center wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Additional information</h4>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
     </div>
-  </main>
-  <!--Main layout-->
+  </div>
 
-  <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+			<div class="wow fadeInUp col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10" data-wow-delay="0.9s">
+				<h2>Signup Newsletter</h2>
+				<p>Get discounts for your personal fitness and gym services now.</p>
+				<div class="newsletter_detail">
+					<form action="#" method="post" id="newsletter-signup">
+						<div class="col-md-6 col-sm-6">
+							<input name="name" type="text" class="form-control" id="name" placeholder="Name">
+					  	</div>
+						<div class="col-md-6 col-sm-6">
+							<input name="email" type="email" class="form-control" id="email" placeholder="Email">
+					  	</div>
+						<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+							<input name="submit" type="submit" class="form-control" id="submit" value="SEND MESSAGE">
+						</div>
+				  	</form>
+				</div>
+			</div>
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
+		</div>
+	</div>
+</section>
 
-    <hr class="my-4">
 
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
+<!-- =========================
+    BLOG SECTION   
+============================== -->
+<section id="blog" class="parallax-section">
+	<div class="container">
+		<div class="row">
 
-      <a href="https://twitter.com/MDBootstrap" target="_blank">
-        <i class="fab fa-twitter mr-3"></i>
-      </a>
+			<div class="col-md-12 col-sm-12 text-center">
+				<h2>Fitness Blog</h2>
+				<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo.</p>
+			</div>
 
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
+			<div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="0.9s">
+				<div class="blog-thumb">
+					<span class="blog-date">Body Fitness / July 2, 2016</span>
+					<h3 class="blog-title"><a href="blog-single.html">How to get a fitness model body?</a></h3>
+					<h5 id="blog-author">by David Walker</h5>
+				</div>
+			</div>
 
-      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-        <i class="fab fa-google-plus-g mr-3"></i>
-      </a>
+			<div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="1.3s">
+				<div class="blog-thumb">
+					<span class="blog-date">Healthy Fit / June 8, 2016</span>
+					<h3 class="blog-title"><a href="blog-single.html">Personal Fitness Tips</a></h3>
+					<h5 id="blog-author">by George</h5>
+				</div>
+			</div>
 
-      <a href="https://dribbble.com/mdbootstrap" target="_blank">
-        <i class="fab fa-dribbble mr-3"></i>
-      </a>
+			<div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="1.6s">
+				<div class="blog-thumb">
+					<span class="blog-date">Gym Services / May 9, 2016</span>
+					<h3 class="blog-title"><a href="blog-single.html">Efficient Workout Plans</a></h3>
+					<h5 id="blog-author">by Mary Louis</h5>
+				</div>
+			</div>
 
-      <a href="https://pinterest.com/mdbootstrap" target="_blank">
-        <i class="fab fa-pinterest mr-3"></i>
-      </a>
+			<div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="1.9s">
+				<div class="blog-thumb">
+					<span class="blog-date">Practice Aerobics / April 18, 2016</span>
+					<h3 class="blog-title"><a href="blog-single.html">How to practice Aerobics?</a></h3>
+					<h5 id="blog-author">by Michael Fit</h5>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>
 
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
 
-      <a href="http://codepen.io/mdbootstrap/" target="_blank">
-        <i class="fab fa-codepen mr-3"></i>
-      </a>
-    </div>
-    <!-- Social icons -->
+<!-- =========================
+    PRICE SECTION   
+============================== -->
+<section id="price" class="parallax-section">
+	<div class="container">
+		<div class="row">
 
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2018 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
+			<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.9s">
+				<h2>Our Prices</h2>
+				<p>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo.</p>
+			</div>
 
-  </footer>
-  <!--/.Footer-->
-  
+			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1s">
+				<div class="pricing__item">
+                    <h3 class="pricing__title">Healthy</h3>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>350</div>
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">One General Trainer</li>
+                        <li class="pricing__feature">Gym Services</li>
+                        <li class="pricing__feature">5 Yoga Courses</li>
+                        <li class="pricing__feature">10 Thai Massages</li>
+                        <li class="pricing__feature">15 Aerobics</li>
+                    </ul>
+                    <button class="pricing__action">Sign Up Now</button>
+                </div>
+			</div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.3s">
+				<div class="pricing__item">
+                    <h3 class="pricing__title">Best Fit</h3>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>550</div>                  
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Two General Trainers</li>
+                        <li class="pricing__feature">Gym Services</li>
+                        <li class="pricing__feature">10 Yoga Courses</li>
+                        <li class="pricing__feature">20 Thai Massages</li>
+                        <li class="pricing__feature">25 Aerobics</li>
+                    </ul>
+                    <button class="pricing__action">Sign Up Now</button>
+                </div>
+			</div>
+
+			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.6s">
+				<div class="pricing__item">
+                    <h3 class="pricing__title">Rigid Body</h3>
+                    <div class="pricing__price"><span class="pricing__currency">$</span>750</div> 
+                    <ul class="pricing__feature-list">
+                        <li class="pricing__feature">Three Personal Trainers</li>
+                        <li class="pricing__feature">Gym Services</li>
+                        <li class="pricing__feature">15 Yoga Courses</li>
+                        <li class="pricing__feature">20 Thai Massages</li>
+                        <li class="pricing__feature">35 Aerobics</li>
+                    </ul>
+                   <button class="pricing__action">Sign Up Now</button>
+                </div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<!-- =========================
+    TESTIMONIAL SECTION   
+============================== -->
+<section id="testimonial" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<!-- Testimonial Owl Carousel section
+			================================================== -->
+			<div id="owl-testimonial" class="owl-carousel">
+
+				<div class="item col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 wow fadeInUp" data-wow-delay="0.6s">
+					<i class="fa fa-quote-left"></i>
+					<h3>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet, wisi risus purus augue vulputate.</h3>
+					<h4>Sandar ( Fashion Designer )</h4>
+				</div>
+
+				<div class="item col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 wow fadeInUp" data-wow-delay="0.6s">
+					<i class="fa fa-quote-left"></i>
+					<h3>Yes! Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet, wisi risus purus augue.</h3>
+					<h4>James Job ( Social Assistant )</h4>
+				</div>
+
+				<div class="item col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 wow fadeInUp" data-wow-delay="0.6s">
+					<i class="fa fa-quote-left"></i>
+					<h3>Sed dapibus rutrum lobortis. Sed nec interdum nunc, quis sodales ante. Maecenas volutpat congue.</h3>
+					<h4>Mark Otto ( New Cyclist )</h4>
+				</div>
+
+				<div class="item col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 wow fadeInUp" data-wow-delay="0.6s">
+					<i class="fa fa-quote-left"></i>
+					<h3>Lorem ipsum dolor sit amet, maecenas eget vestibulum justo imperdiet, wisi risus purus.</h3>
+					<h4>David Moore ( Pro Boxer )</h4>
+				</div>
+				
+			</div>
+
+		</div>
+	</div>
+    {% endblock %} 
+</section>
+
+
+<!-- =========================
+    FOOTER SECTION   
+============================== -->
+<footer>
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-4 col-sm-4" data-wow-delay="0.6s">
+				<h2>About Fitness</h2>
+				<p>Nunc id turpis tincidunt dui volutpat hendrerit et efficitur dolor. Morbi quis tempor felis, ut dictum ipsum. Praesent venenatis rutrum interdum.</p>
+			</div>
+
+			<div class="wow fadeInUp col-md-5 col-sm-4"  data-wow-delay="0.9s">
+				<h2>Sessions</h2>
+					<div>
+						<h5>Morning</h5>
+						<h4>6:00 AM - 11:00 PM</h4>
+					</div>
+					<div>
+						<h5>Evening</h5>
+						<h4>4:00 PM - 9:00 PM</h4>
+					</div>
+			</div>
+
+			<div class="wow fadeInUp col-md-3 col-sm-4" data-wow-delay="1s">
+				<h2>Follow us</h2>
+				<ul class="social-icon">
+					<li><a href="#" class="fa fa-facebook wow fadeIn" data-wow-delay="1s"></a></li>
+					<li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="1.3s"></a></li>
+					<li><a href="#" class="fa fa-dribbble wow fadeIn" data-wow-delay="1.6s"></a></li>
+					<li><a href="#" class="fa fa-behance wow fadeInUp" data-wow-delay="1.9s"></a></li>
+					<li><a href="#" class="fa fa-google-plus wow fadeIn" data-wow-delay="2s"></a></li>
+				</ul>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="col-md-12 col-sm-12">
+				<p class="copyright-text">Copyright &copy; 2016 Your Company 
+                    
+                    | Design: TemplateMo</p>
+			</div>
+			
+		</div>
+	</div>
+</footer>
+
 <!-- =========================
      SCRIPTS   
 ============================== -->

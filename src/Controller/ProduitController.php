@@ -8,12 +8,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
 
 /**
  * @Route("/produit")
  */
 class ProduitController extends AbstractController
 {
+
+ 
+
+
+
+
+
+
+
+
+
+    
     /**
      * @Route("/", name="produit_index", methods={"GET"})
      */
@@ -33,11 +46,13 @@ class ProduitController extends AbstractController
             ]); 
         }
 
+
         
         return $this->render('produit/index.html.twig', [
             'produits' => $produits,
         ]);
     }
+
 
     /**
      * @Route("/new", name="produit_new", methods={"GET","POST"})
@@ -118,4 +133,25 @@ class ProduitController extends AbstractController
 
         return $this->redirectToRoute('produit_index');
     }
-}
+
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+

@@ -25,6 +25,7 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nomCategorie", type="string", length=50, nullable=false)
+     * @Assert\NotNull(message="ce champs ne peut pas etre null")
      */
     private $nomcategorie;
 

@@ -21,7 +21,8 @@ class DashboardController extends AbstractDashboardController
 
     public function indexAction()
     {
-        return $this->render('admin/home.html.twig');
+
+       // return $this->render('admin/home.html.twig');
     }
 
 
